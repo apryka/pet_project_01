@@ -15,6 +15,10 @@ class PostList extends Component {
         };
     }
 
+    componentDidMount() {
+        this.__getPostsFromAPI();
+    }
+
     __getPostsFromAPI() {
         fetch(apiUrl)
             .then(response => response.json())
@@ -22,8 +26,8 @@ class PostList extends Component {
     }
 
     __createPostsList() {
-        let postsArray = this.state.posts;
-        let filterText = this.props.filteredText;
+        const postsArray = this.state.posts;
+        const filterText = this.props.filteredText;
         let finalArray = [];
 
         postsArray.filter(post => {
@@ -38,10 +42,6 @@ class PostList extends Component {
         return (
             <SinglePost key={post.id} title={post.title} body={post.body} />
         )
-    }
-
-    componentWillMount() {
-        this.__getPostsFromAPI();
     }
 
     render() {
@@ -60,6 +60,5 @@ class PostList extends Component {
         )
     }
 }
-
 
 export default PostList;

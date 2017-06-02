@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Grid, Col, FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
 import './Search.scss';
 
 
 class Search extends Component {
+
+    static propTypes = {
+        onFilterTextSubmit: PropTypes.func.isRequired,
+    };
+
     constructor(props) {
         super(props);
 

@@ -5,6 +5,10 @@ import './Footer.scss';
 
 class Footer extends Component {
 
+    static propTypes = {
+        text: PropTypes.string
+    };
+
     render() {
         return (
             <footer className="App-footer">
@@ -13,10 +17,5 @@ class Footer extends Component {
         )
     }
 }
-
-Footer.propTypes = {
-    text: PropTypes.string
-};
-
 
 export default Footer;

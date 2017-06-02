@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
+import Logo from '../Logo/Logo';
 import PropTypes from 'prop-types';
 import { logoUrl } from '../config';
 import './Header.scss';
 
-
-class Logo extends Component {
-
-    render() {
-        return (
-            <img src={this.props.url} alt="Logo" className="App-logo" />
-        )
-    }
-}
-
-
 class Header extends Component {
+
+    static propTypes = {
+        text: PropTypes.string
+    };
 
     render() {
         return (
@@ -27,9 +21,5 @@ class Header extends Component {
         );
     }
 }
-
-Header.propTypes = {
-    text: PropTypes.string
-};
 
 export default Header;

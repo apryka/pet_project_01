@@ -6,6 +6,11 @@ import './SinglePost.scss';
 
 class SinglePost extends Component {
 
+    static propTypes = {
+        title: PropTypes.string,
+        body: PropTypes.string,
+    };
+
     render() {
         return (
             <Grid className="SinglePost">
@@ -23,11 +28,5 @@ class SinglePost extends Component {
         )
     }
 }
-
-SinglePost.propTypes = {
-    title: PropTypes.string,
-    body: PropTypes.string,
-};
-
 
 export default SinglePost;
