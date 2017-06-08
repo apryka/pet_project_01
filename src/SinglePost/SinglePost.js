@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Grid, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './SinglePost.scss';
 
 
@@ -20,7 +21,7 @@ class SinglePost extends Component {
                         <p>{this.props.body}</p>
                     </Col>
                     <Col md={4} className="text-right">
-                        <Button type="button">Open</Button>
+                        <Link to={ `/post/${this.props.id}` } className="btn btn-default">Open</Link>
                         <Button type="button" bsStyle="warning">Delete</Button>
                     </Col>
                 </Row>

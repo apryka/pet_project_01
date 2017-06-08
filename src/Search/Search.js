@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Grid, Col, FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Search.scss';
 
 
@@ -20,9 +21,31 @@ class Search extends Component {
     }
 
     __handleInputChange(event) {
+
+        let timerId = this.timerId;
+        let inputValue = event.target.value;
+
+        if (timerId) {
+            clearTimeout(timerId);
+        }
+
+        timerId = setTimeout( () => {
+            this.__setFilterText(inputValue);
+        }, 1000);
+
+        this.timerId = timerId;
+
         this.setState({
             filterText: event.target.value
         });
+
+    }
+
+    __setFilterText(inputValue) {
+        console.log(inputValue);
+
+        this.props.onFilterTextSubmit(inputValue);
+
     }
 
     __handleFormSubmit(event) {
@@ -47,11 +70,14 @@ class Search extends Component {
                                         onChange={(e) => this.__handleInputChange(e)}
                                     />
                                     <InputGroup.Button>
-                                        <Button className="btn btn-default" type="submit">Search</Button>
+                                        <Button type="submit">Search</Button>
                                     </InputGroup.Button>
                                 </InputGroup>
                             </FormGroup>
                         </form>
+                    </Col>
+                    <Col md={6} className="text-right">
+                        <Link to="/new-post" className="btn btn-success">Add new post</Link>
                     </Col>
                 </Row>
             </Grid>

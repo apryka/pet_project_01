@@ -40,7 +40,7 @@ class PostList extends Component {
 
     __generateSinglePost(post) {
         return (
-            <SinglePost key={post.id} title={post.title} body={post.body} />
+            <SinglePost key={post.id} id={post.id} title={post.title} body={post.body} />
         )
     }
 
@@ -51,7 +51,7 @@ class PostList extends Component {
                 <Grid>
                     <Row>
                         <Col md={12}>
-                            <h6 className="text-right">Items found: {this.__createPostsList().length}</h6>
+                            <h6 className="text-left">Items found: {this.__createPostsList().length}</h6>
                         </Col>
                     </Row>
                 </Grid>
