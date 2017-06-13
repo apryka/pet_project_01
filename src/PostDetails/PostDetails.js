@@ -27,17 +27,13 @@ class PostDetails extends Component {
         };
     }
 
-    componentDidMount() {
-        this.__getDataFromAPI();
-    }
-
     __getDataFromAPI() {
-
-        // if (this.props.match.params.id === undefined) return;
 
         fetch(apiUsers)
             .then(response => response.json())
             .then(json => this.setState({users: json}));
+
+        if (this.props.match.params.id === undefined) return;
 
         fetch(`${apiUrl}/${this.state.post.id}/comments`)
             .then(response => response.json())
@@ -49,14 +45,18 @@ class PostDetails extends Component {
 
     }
 
+    componentDidMount() {
+        this.__getDataFromAPI();
+    }
+
     render() {
         return (
-            <main>
+            <div className='PostDetails'>
                 <Header text="Pet project" />
                 <Breadcrumbs postId={this.state.post.id} postTitle={this.state.post.title} />
                 <Form users={this.state.users} comments={this.state.comments} postId={this.state.post.id} postTitle={this.state.post.title} postBody={this.state.post.body} />
-                <Footer text={`Copyright ${new Date().getFullYear()}`}  />
-            </main>
+                <Footer text={`Copyright ${new Date().getFullYear()}`} />
+            </div>
         )
     }
 }
