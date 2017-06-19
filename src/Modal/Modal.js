@@ -8,10 +8,22 @@ class ModalWindow extends Component {
     static propTypes = {
         modalBody: PropTypes.string.isRequired,
         modalTitle: PropTypes.string.isRequired,
-        isModalOpen: PropTypes.bool,
-        closeModal: PropTypes.func,
-        deletePost: PropTypes.func
+        isModalOpen: PropTypes.bool.isRequired,
+        enableButtons: PropTypes.bool.isRequired,
+        closeFunction: PropTypes.func,
+        confirmFunction: PropTypes.func
     };
+
+    __getButtons(closeFunction, confirmFunction) {
+        if (this.props.enableButtons) {
+            return (
+                <Modal.Footer>
+                    <Button onClick={closeFunction}>Close</Button>
+                    <Button onClick={confirmFunction} bsStyle="success">Confirm</Button>
+                </Modal.Footer>
+            )
+        }
+    }
 
     render() {
         return (
@@ -25,10 +37,11 @@ class ModalWindow extends Component {
                 <Modal.Body>
                     {this.props.modalBody}
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={this.props.closeModal}>Close</Button>
-                    <Button onClick={this.props.deletePost} bsStyle="success">Confirm</Button>
-                </Modal.Footer>
+                {this.__getButtons(this.props.closeFunction, this.props.confirmFunction )}
+                {/*<Modal.Footer>*/}
+                    {/*<Button onClick={this.props.closeFunction}>Close</Button>*/}
+                    {/*<Button onClick={this.props.confirmFunction} bsStyle="success">Confirm</Button>*/}
+                {/*</Modal.Footer>*/}
             </Modal>
         )
     }

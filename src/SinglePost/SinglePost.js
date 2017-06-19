@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Row, Grid, Col, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { apiUrl } from '../config';
 import './SinglePost.scss';
 
 

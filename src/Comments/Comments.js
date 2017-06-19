@@ -10,14 +10,14 @@ class Comments extends Component {
         comments: PropTypes.array,
     };
 
-    __filterComments() {
+    __getComments() {
         const commentArray = this.props.comments;
 
-        return commentArray.map(comment => this.__generateComments(comment));
+        return commentArray.map(comment => this.__wrapComment(comment));
 
     }
 
-    __generateComments(comment) {
+    __wrapComment(comment) {
         return (
             <Well key={comment.id}>
                 {comment.body}
@@ -29,7 +29,7 @@ class Comments extends Component {
         return (
             <div className="Comments">
                 <h3>Comments</h3>
-                {this.__filterComments()}
+                {this.__getComments()}
             </div>
         )
     }

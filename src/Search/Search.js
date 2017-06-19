@@ -22,7 +22,7 @@ class Search extends Component {
 
     __handleInputChange(event) {
 
-        let timerId = this.timerId;
+        let timerId;
         let inputValue = event.target.value;
 
         if (timerId) {
@@ -33,16 +33,13 @@ class Search extends Component {
             this.__setFilterText(inputValue);
         }, 1000);
 
-        this.timerId = timerId;
-
         this.setState({
-            filterText: event.target.value
+            filterText: inputValue
         });
 
     }
 
     __setFilterText(inputValue) {
-        console.log(inputValue);
 
         this.props.onFilterTextSubmit(inputValue);
 

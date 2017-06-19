@@ -48,9 +48,6 @@ class PostList extends Component {
         const url = `${apiUrl}/${postId}`;
         const posts = this.state.posts.filter(post => post.id !== postId);
 
-        console.log('Remove post with ID - ', postId);
-        console.log(url);
-
         this.setState({
             posts: posts,
             isModalOpen: false
@@ -97,8 +94,9 @@ class PostList extends Component {
                 { this.__createPostsList() }
                 <ModalWindow
                     isModalOpen = {this.state.isModalOpen}
-                    closeModal = { e => this.__handleCloseModal(e) }
-                    deletePost = { e => this.__handleDeletePost(e) }
+                    enableButtons = {true}
+                    closeFunction = { e => this.__handleCloseModal(e) }
+                    confirmFunction = { e => this.__handleDeletePost(e) }
                     modalTitle = 'Delete post'
                     modalBody = { `Please confirm to delete the post with ID ${this.state.postId}` }
                 />
