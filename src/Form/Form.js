@@ -80,14 +80,24 @@ class Form extends Component {
         let updatedValue;
 
         if (!!event.target.value) {
-            updatedValue = Object.assign({}, this.state[event.target.id], {
-                value: event.target.value,
-                validationState: 'success',
-                validationMessage: ''
-            });
+            // updatedValue = Object.assign({}, this.state[event.target.id], {
+            //     value: event.target.value,
+            //     validationState: 'success',
+            //     validationMessage: ''
+            // });
+            //
+            // this.setState({
+            //     [event.target.id]: updatedValue,
+            //     isButtonDisabled: false
+            // });
 
             this.setState({
-                [event.target.id]: updatedValue,
+                [event.target.id]: {
+                    ...event.target.id,
+                    value: event.target.value,
+                    validationState: 'success',
+                    validationMessage: ''
+                },
                 isButtonDisabled: false
             });
 
@@ -102,14 +112,24 @@ class Form extends Component {
             // });
 
         } else {
-            updatedValue = Object.assign({}, this.state[event.target.id], {
-                value: event.target.value,
-                validationState: 'error',
-                validationMessage: 'This field is required'
-            });
+            // updatedValue = Object.assign({}, this.state[event.target.id], {
+            //     value: event.target.value,
+            //     validationState: 'error',
+            //     validationMessage: 'This field is required'
+            // });
+            //
+            // this.setState({
+            //     [event.target.id]: updatedValue,
+            //     isButtonDisabled: true
+            // });
 
             this.setState({
-                [event.target.id]: updatedValue,
+                [event.target.id]: {
+                    ...event.target.id,
+                    value: event.target.value,
+                    validationState: 'error',
+                    validationMessage: 'This field is required'
+                },
                 isButtonDisabled: true
             });
         }

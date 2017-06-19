@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69373d8a-1155-468e-8dab-59c8b13f16d5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Comments/Comments.js" afterPath="$PROJECT_DIR$/src/Comments/Comments.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Form/Form.js" afterPath="$PROJECT_DIR$/src/Form/Form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modal/Modal.js" afterPath="$PROJECT_DIR$/src/Modal/Modal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PostDetails/PostDetails.js" afterPath="$PROJECT_DIR$/src/PostDetails/PostDetails.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PostList/PostList.js" afterPath="$PROJECT_DIR$/src/PostList/PostList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Search/Search.js" afterPath="$PROJECT_DIR$/src/Search/Search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SinglePost/SinglePost.js" afterPath="$PROJECT_DIR$/src/SinglePost/SinglePost.js" />
     </list>
     <ignored path="pet-project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,15 +61,15 @@
       <file leaf-file-name="Form.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Form/Form.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="82" column="17" lean-forward="false" selection-start-line="82" selection-start-column="17" selection-end-line="91" selection-end-column="15" />
+            <state relative-caret-position="396">
+              <caret line="247" column="15" lean-forward="true" selection-start-line="247" selection-start-column="15" selection-end-line="247" selection-end-column="15" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
-                <marker date="1497878529000" expanded="true" signature="7441:9345" ph="..." />
-                <marker date="1497878529000" expanded="true" signature="7463:9284" ph="..." />
-                <marker date="1497878529000" expanded="true" signature="7614:9234" ph="..." />
-                <marker date="1497878529000" expanded="true" signature="8714:8875" ph="..." />
-                <marker date="1497878529000" expanded="true" signature="8941:9202" ph="..." />
+                <marker date="1497880499000" expanded="true" signature="8178:10082" ph="..." />
+                <marker date="1497880499000" expanded="true" signature="8200:10021" ph="..." />
+                <marker date="1497880499000" expanded="true" signature="8351:9971" ph="..." />
+                <marker date="1497880499000" expanded="true" signature="9451:9612" ph="..." />
+                <marker date="1497880499000" expanded="true" signature="9678:9939" ph="..." />
               </folding>
             </state>
           </provider>
@@ -490,12 +482,12 @@
       <workItem from="1495705967481" duration="25544000" />
       <workItem from="1495999384309" duration="103399000" />
       <workItem from="1497299732066" duration="1414000" />
-      <workItem from="1497333517092" duration="13464000" />
+      <workItem from="1497333517092" duration="14385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143821000" />
+    <option name="totallyTimeSpent" value="144742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -923,15 +915,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/Form.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="82" column="17" lean-forward="false" selection-start-line="82" selection-start-column="17" selection-end-line="91" selection-end-column="15" />
+        <state relative-caret-position="396">
+          <caret line="247" column="15" lean-forward="true" selection-start-line="247" selection-start-column="15" selection-end-line="247" selection-end-column="15" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-            <marker date="1497878529000" expanded="true" signature="7441:9345" ph="..." />
-            <marker date="1497878529000" expanded="true" signature="7463:9284" ph="..." />
-            <marker date="1497878529000" expanded="true" signature="7614:9234" ph="..." />
-            <marker date="1497878529000" expanded="true" signature="8714:8875" ph="..." />
-            <marker date="1497878529000" expanded="true" signature="8941:9202" ph="..." />
+            <marker date="1497880499000" expanded="true" signature="8178:10082" ph="..." />
+            <marker date="1497880499000" expanded="true" signature="8200:10021" ph="..." />
+            <marker date="1497880499000" expanded="true" signature="8351:9971" ph="..." />
+            <marker date="1497880499000" expanded="true" signature="9451:9612" ph="..." />
+            <marker date="1497880499000" expanded="true" signature="9678:9939" ph="..." />
           </folding>
         </state>
       </provider>
