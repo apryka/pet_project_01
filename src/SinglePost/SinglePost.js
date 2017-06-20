@@ -18,9 +18,6 @@ class SinglePost extends Component {
 
         this.props.handleOpenModal(this.props.id);
 
-        // fetch(url, { method: 'DELETE' })
-        //     .then(response => response.json())
-        //     .then(json => console.log(json));
     }
 
     render() {

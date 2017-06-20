@@ -34,7 +34,7 @@ class Form extends Component {
     }
 
     __generateFieldGroup(props) {
-        //const { id, className, validationState, validationMessage, placeholder, componentClass, value, onInput } = props;
+
         return (
             <FormGroup controlId={props.id} validationState={props.validationState}>
                 <FormControl
@@ -46,6 +46,16 @@ class Form extends Component {
                 <HelpBlock>{props.validationMessage}</HelpBlock>
             </FormGroup>
         );
+    }
+
+    __generateNav() {
+
+        return (
+            <FormGroup className="text-left nav">
+                <Button bsStyle="success" type='submit' disabled={this.state.isButtonDisabled}>Save Changes</Button>
+                <Link to='/' className="btn btn-default">Cancel</Link>
+            </FormGroup>
+        )
     }
 
     __generateUsers(userArray) {
@@ -66,30 +76,8 @@ class Form extends Component {
     }
 
     __setPostValue(event) {
-        // const updatedValue = Object.assign({}, this.state[event.target.id], {
-        //     value: event.target.value,
-        //     validationState: 'success',
-        //     validationMessage: ''
-        // });
-        // (!event.target.value) ? console.log('this shit is empyt') : console.log('nice content');
-        // this.setState({
-        //     [event.target.id]: updatedValue,
-        //     isButtonDisabled: false
-        // });
-
-        let updatedValue;
 
         if (!!event.target.value) {
-            // updatedValue = Object.assign({}, this.state[event.target.id], {
-            //     value: event.target.value,
-            //     validationState: 'success',
-            //     validationMessage: ''
-            // });
-            //
-            // this.setState({
-            //     [event.target.id]: updatedValue,
-            //     isButtonDisabled: false
-            // });
 
             this.setState({
                 [event.target.id]: {
@@ -101,27 +89,7 @@ class Form extends Component {
                 isButtonDisabled: false
             });
 
-            // this.setState( (event) => {
-            //     [event.target.id]: {
-            //     ...state.[event.target.id],
-            //             value: event.target.value,
-            //             validationState: 'success',
-            //             validationMessage: ''
-            //     }
-            //
-            // });
-
         } else {
-            // updatedValue = Object.assign({}, this.state[event.target.id], {
-            //     value: event.target.value,
-            //     validationState: 'error',
-            //     validationMessage: 'This field is required'
-            // });
-            //
-            // this.setState({
-            //     [event.target.id]: updatedValue,
-            //     isButtonDisabled: true
-            // });
 
             this.setState({
                 [event.target.id]: {
@@ -160,7 +128,7 @@ class Form extends Component {
         event.preventDefault();
 
         let method;
-        let updatedContent;
+        // let updatedContent;
         let url = apiUrl;
         const postData = {
             title: this.state.postTitle.value,
@@ -169,37 +137,51 @@ class Form extends Component {
         };
 
         if (!postData.title.length) {
-            updatedContent = Object.assign({}, this.state.postTitle, {validationState: 'error', validationMessage: 'This field is required' });
 
             this.setState({
-                postTitle: updatedContent,
+                postTitle: {
+                    ...this.state.postTitle,
+                    validationState: 'error',
+                    validationMessage: 'This field is required'
+                },
                 isButtonDisabled: true
             });
 
         } else {
-            updatedContent = Object.assign({}, this.state.postTitle, {validationState: 'success'});
 
             this.setState({
-                postTitle: updatedContent
+                postTitle: {
+                    ...this.state.postTitle,
+                    validationState: 'success',
+                    validationMessage: ''
+                },
+                isButtonDisabled: false
             });
         }
 
         if (!postData.body.length) {
-            updatedContent = Object.assign({}, this.state.postBody, {validationState: 'error', validationMessage: 'This field is required' });
 
             this.setState({
-                postBody: updatedContent,
+                postBody: {
+                    ...this.state.postBody,
+                    validationState: 'error',
+                    validationMessage: 'This field is required'
+                },
                 isButtonDisabled: true
             });
 
         } else {
-            updatedContent = Object.assign({}, this.state.postBody, {validationState: 'success'});
 
             this.setState({
-                postBody: updatedContent
+                postBody: {
+                    ...this.state.postBody,
+                    validationState: 'success',
+                    validationMessage: ''
+                },
+                isButtonDisabled: false
             });
         }
-        // console.log(!!postData.userId.length);
+
         if (!postData.userId.length) {
             this.setState({
                 usersValidationState: 'error',
@@ -219,40 +201,33 @@ class Form extends Component {
         if (this.state.usersValidationState === 'success' &&
             this.state.postTitle.validationState === 'success' &&
             this.state.postBody.validationState === 'success') {
-                // this.__fetchApi(url, method, postData);
 
                 fetch(url, { method: method, data: postData})
                     .then(response => response.json())
                     .then(json => console.log(postData, json));
         }
 
-        // fetch(url, { method: method, data: postData})
-        //     .then(response => response.json())
-        //     .then(json => console.log(postData, json));
-
     }
-
-    // __fetchApi(url, method, postData) {
-    //     fetch(url, { method: method, data: postData})
-    //         .then(response => response.json())
-    //         .then(json => console.log(postData, json));
-    // }
 
     componentWillReceiveProps(nextProps) {
 
         if (this.props.postTitle.value !== nextProps.postTitle) {
-            let updatedTitle = Object.assign({}, this.state.postTitle, {value:nextProps.postTitle});
 
             this.setState({
-                postTitle:updatedTitle
+                postTitle: {
+                    ...this.state.postTitle,
+                    value: nextProps.postTitle
+                }
             });
         }
 
         if (this.props.postBody.value !== nextProps.postBody) {
-            let updatedBody = Object.assign({}, this.state.postBody, {value:nextProps.postBody});
 
             this.setState({
-                postBody: updatedBody,
+                postBody: {
+                    ...this.state.postBody,
+                    value: nextProps.postBody
+                }
             });
         }
     }
@@ -284,10 +259,7 @@ class Form extends Component {
                                 <h3>Users</h3>
                                 {this.__generateUsers(this.props.users)}
                             </FormGroup>
-                            <FormGroup className="text-left nav">
-                                <Button bsStyle="success" type='submit' disabled={this.state.isButtonDisabled}>Save Changes</Button>
-                                <Link to='/' className="btn btn-default">Cancel</Link>
-                            </FormGroup>
+                            {this.__generateNav()}
                         </form>
                     </Col>
                 </Row>

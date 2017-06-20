@@ -38,10 +38,6 @@ class ModalWindow extends Component {
                     {this.props.modalBody}
                 </Modal.Body>
                 {this.__getButtons(this.props.closeFunction, this.props.confirmFunction )}
-                {/*<Modal.Footer>*/}
-                    {/*<Button onClick={this.props.closeFunction}>Close</Button>*/}
-                    {/*<Button onClick={this.props.confirmFunction} bsStyle="success">Confirm</Button>*/}
-                {/*</Modal.Footer>*/}
             </Modal>
         )
     }

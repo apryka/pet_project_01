@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Form from '../Form/Form';
@@ -20,7 +19,7 @@ class PostDetails extends Component {
                 id:  parseInt(this.props.match.params.id, 10),
                 title: '',
                 body: '',
-                userId: -1,
+                userId: null,
             },
 
         };

@@ -14,7 +14,7 @@ class PostList extends Component {
         this.state = {
             posts: [],
             isModalOpen: false,
-            postId: -1
+            postId: null
         };
     }
 
@@ -60,7 +60,6 @@ class PostList extends Component {
     }
 
     __handleOpenModal(postId) {
-        // const url = `${apiUrl}/${postId}`;
 
         this.setState({
             isModalOpen: true,
