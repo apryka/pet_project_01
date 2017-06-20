@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69373d8a-1155-468e-8dab-59c8b13f16d5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Form/Form.js" afterPath="$PROJECT_DIR$/src/Form/Form.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Modal/Modal.js" afterPath="$PROJECT_DIR$/src/Modal/Modal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PostDetails/PostDetails.js" afterPath="$PROJECT_DIR$/src/PostDetails/PostDetails.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PostList/PostList.js" afterPath="$PROJECT_DIR$/src/PostList/PostList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SinglePost/SinglePost.js" afterPath="$PROJECT_DIR$/src/SinglePost/SinglePost.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config.js" afterPath="$PROJECT_DIR$/src/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pet-project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,11 +48,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="68" lean-forward="true" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -89,18 +95,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="15" column="19" lean-forward="false" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Breadcrumbs.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Breadcrumbs/Breadcrumbs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="36" lean-forward="false" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -219,7 +213,6 @@
         <option value="$PROJECT_DIR$/src/Breadcrumbs/Breadcrumbs.js" />
         <option value="$PROJECT_DIR$/src/Modal/Modal.scss" />
         <option value="$PROJECT_DIR$/src/Form/Form.scss" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/Comments/Comments.js" />
         <option value="$PROJECT_DIR$/src/Search/Search.js" />
         <option value="$PROJECT_DIR$/src/Form/Form.js" />
@@ -228,6 +221,7 @@
         <option value="$PROJECT_DIR$/src/PostList/PostList.js" />
         <option value="$PROJECT_DIR$/src/SinglePost/SinglePost.js" />
         <option value="$PROJECT_DIR$/src/config.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -639,12 +633,12 @@
       <workItem from="1495705967481" duration="25544000" />
       <workItem from="1495999384309" duration="103399000" />
       <workItem from="1497299732066" duration="1414000" />
-      <workItem from="1497333517092" duration="17373000" />
+      <workItem from="1497333517092" duration="17685000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147730000" />
+    <option name="totallyTimeSpent" value="148042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -945,14 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PostDetails/PostDetails.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1085,6 +1071,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="68" lean-forward="true" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding />
         </state>
       </provider>
