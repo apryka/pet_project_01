@@ -1,0 +1,23 @@
+.PostDetails {
+
+  .nav {
+
+    margin-bottom: 25px;
+
+    .btn {
+      margin: 5px;
+    }
+  }
+
+  .post {
+
+    &__body {
+      min-height: 10em;
+      resize: vertical;
+    }
+  }
+
+  .help-block {
+    text-align: left;
+  }
+}

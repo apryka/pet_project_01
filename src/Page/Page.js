@@ -28,6 +28,7 @@ class Page extends Component {
                 <Search onFilterTextSubmit = { (text) => this.__handleFilterText(text)}/>
                 <PostList filteredText={ this.state.filterText } />
                 <Footer text={`Copyright ${new Date().getFullYear()}`}  />
+                {this.props.children}
             </div>
         );
     }
