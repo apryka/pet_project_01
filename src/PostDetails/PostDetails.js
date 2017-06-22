@@ -31,7 +31,7 @@ class PostDetails extends Component {
             .then(response => response.json())
             .then(json => this.setState({users: json}));
 
-        if (this.props.match.params.id === undefined) return {};
+        if (!this.props.match.params.id) { return };
 
         fetch(`${apiUrl}/${this.state.post.id}/comments`)
             .then(response => response.json())

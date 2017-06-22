@@ -9,27 +9,34 @@ class ModalWindow extends Component {
         modalBody: PropTypes.string.isRequired,
         modalTitle: PropTypes.string.isRequired,
         isModalOpen: PropTypes.bool.isRequired,
-        enableButtons: PropTypes.bool.isRequired,
         closeFunction: PropTypes.func,
-        confirmFunction: PropTypes.func
+        confirmFunction: PropTypes.func,
+        buttons: PropTypes.array.isRequired
     };
 
-    __getButtons(closeFunction, confirmFunction) {
-        if (this.props.enableButtons) {
-            return (
-                <Modal.Footer>
-                    <Button onClick={closeFunction}>Close</Button>
-                    <Button onClick={confirmFunction} bsStyle="success">Confirm</Button>
-                </Modal.Footer>
-            )
-        }
+    __getButtons(buttons) {
+
+        if (!buttons.length) { return }
+
+        const buttonItems = buttons.map( (button) =>
+
+            <Button key={button.id} onClick={button.action} bsStyle={button.style}>{button.label}</Button>
+
+        );
+
+        return (
+            <Modal.Footer>{buttonItems}</Modal.Footer>
+        )
+
+
     }
 
     render() {
+
         return (
             <Modal
                 show={this.props.isModalOpen}
-                onHide={this.props.closeModal}
+                onHide={this.props.closeFunction}
             >
                 <Modal.Header closeButton>
                     <Modal.Title>{this.props.modalTitle}</Modal.Title>
@@ -37,7 +44,7 @@ class ModalWindow extends Component {
                 <Modal.Body>
                     {this.props.modalBody}
                 </Modal.Body>
-                {this.__getButtons(this.props.closeFunction, this.props.confirmFunction )}
+                {this.__getButtons(this.props.buttons)}
             </Modal>
         )
     }

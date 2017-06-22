@@ -23,19 +23,17 @@ class Search extends Component {
     __handleInputChange(event) {
 
         let timerId;
-        let inputValue = event.target.value;
+        let filterText = event.target.value;
 
         if (timerId) {
             clearTimeout(timerId);
         }
 
         timerId = setTimeout( () => {
-            this.__setFilterText(inputValue);
+            this.__setFilterText(filterText);
         }, 1000);
 
-        this.setState({
-            filterText: inputValue
-        });
+        this.setState({ filterText });
 
     }
 

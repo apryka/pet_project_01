@@ -11,9 +11,8 @@ class Comments extends Component {
     };
 
     __getComments() {
-        const commentArray = this.props.comments;
 
-        return commentArray.map(comment => this.__wrapComment(comment));
+        return this.props.comments.map(comment => this.__wrapComment(comment));
 
     }
 

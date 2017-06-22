@@ -19,7 +19,6 @@ class Form extends Component {
         this.state = {
             userId: '',
             isButtonDisabled: false,
-            usersValidationState: null,
             postTitle: {
                 value: '',
                 validationState: null,
@@ -29,8 +28,26 @@ class Form extends Component {
                 value: '',
                 validationState: null,
                 validationMessage: ''
+            },
+            postUsers: {
+                validationState: null
             }
         };
+    }
+
+    __isFormValid() {
+
+        const formFieldsState = [
+            this.state.postTitle,
+            this.state.postBody,
+            this.state.postUsers
+        ];
+
+        for (let field of formFieldsState) {
+            if (field.validationState !== 'success') return false;
+        }
+
+        return true;
     }
 
     __generateFieldGroup(props) {
@@ -66,7 +83,7 @@ class Form extends Component {
                     name='radioUsers'
                     key={user.id}
                     value={user.id}
-                    validationState = { this.state.usersValidationState }
+                    validationState = { this.state.postUsers.validationState }
                     onClick={ e => this.__handleUserSelect(e)}
                 >
                     {user.name}
@@ -116,10 +133,26 @@ class Form extends Component {
         }
     }
 
+    __handleFieldState(value, validationState, validationMessage, isButtonDisabled) {
+
+        this.setState({
+            [value]: {
+                ...this.state[value],
+                validationState: validationState,
+                validationMessage: validationMessage
+            },
+            isButtonDisabled: isButtonDisabled
+        });
+
+    }
+
     __handleUserSelect(event) {
         this.setState({
+            postUsers: {
+                ...this.state.postUsers,
+                validationState: 'success'
+            },
             userId: event.target.value,
-            usersValidationState: 'success',
             isButtonDisabled: false
         });
     }
@@ -128,7 +161,6 @@ class Form extends Component {
         event.preventDefault();
 
         let method;
-        // let updatedContent;
         let url = apiUrl;
         const postData = {
             title: this.state.postTitle.value,
@@ -138,53 +170,28 @@ class Form extends Component {
 
         if (!postData.title.length) {
 
-            this.setState({
-                postTitle: {
-                    ...this.state.postTitle,
-                    validationState: 'error',
-                    validationMessage: 'This field is required'
-                },
-                isButtonDisabled: true
-            });
+            this.__handleFieldState('postTitle', 'error', 'This field is required', true)
 
         } else {
 
-            this.setState({
-                postTitle: {
-                    ...this.state.postTitle,
-                    validationState: 'success',
-                    validationMessage: ''
-                },
-                isButtonDisabled: false
-            });
+            this.__handleFieldState('postTitle', 'success', '', false)
         }
 
         if (!postData.body.length) {
 
-            this.setState({
-                postBody: {
-                    ...this.state.postBody,
-                    validationState: 'error',
-                    validationMessage: 'This field is required'
-                },
-                isButtonDisabled: true
-            });
+            this.__handleFieldState('postBody', 'error', 'This field is required', true)
 
         } else {
 
-            this.setState({
-                postBody: {
-                    ...this.state.postBody,
-                    validationState: 'success',
-                    validationMessage: ''
-                },
-                isButtonDisabled: false
-            });
+            this.__handleFieldState('postBody', 'success', '', false)
         }
 
         if (!postData.userId.length) {
             this.setState({
-                usersValidationState: 'error',
+                postUsers: {
+                    ...this.state.postUsers,
+                    validationState: 'error'
+                },
                 isButtonDisabled: true
             });
 
@@ -198,13 +205,11 @@ class Form extends Component {
             url = `${apiUrl}/${this.props.postId}`;
         }
 
-        if (this.state.usersValidationState === 'success' &&
-            this.state.postTitle.validationState === 'success' &&
-            this.state.postBody.validationState === 'success') {
+        if (this.__isFormValid()) {
 
-                fetch(url, { method: method, data: postData})
-                    .then(response => response.json())
-                    .then(json => console.log(postData, json));
+            fetch(url, { method: method, data: postData})
+                .then(response => response.json())
+                .then(json => console.log(postData, json));
         }
 
     }

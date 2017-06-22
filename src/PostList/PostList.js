@@ -79,6 +79,21 @@ class PostList extends Component {
     }
 
     render() {
+        // styles available "success", "warning", "danger", "info", "default", "primary"
+        const buttonsArray = [
+            {
+                id: 1,
+                label: 'Confirm',
+                style: 'success',
+                action: e => this.__handleDeletePost(e)
+            },
+            {
+                id: 2,
+                label: 'Cancel',
+                style: 'default',
+                action: e => this.__handleCloseModal(e)
+            }
+        ];
 
         return (
 
@@ -93,11 +108,10 @@ class PostList extends Component {
                 { this.__createPostsList() }
                 <ModalWindow
                     isModalOpen = {this.state.isModalOpen}
-                    enableButtons = {true}
                     closeFunction = { e => this.__handleCloseModal(e) }
-                    confirmFunction = { e => this.__handleDeletePost(e) }
                     modalTitle = 'Delete post'
                     modalBody = { `Please confirm to delete the post with ID ${this.state.postId}` }
+                    buttons = { buttonsArray }
                 />
             </div>
         )
