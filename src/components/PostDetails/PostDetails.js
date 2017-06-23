@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
+import Header from '../../containers/Header/Header';
+import Footer from '../../containers/Footer/Footer';
 import Form from '../Form/Form';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-import { apiUrl, apiUsers } from '../config';
+import { apiUrl, apiUsers } from '../../config';
 import './PostDetails.scss';
 
 

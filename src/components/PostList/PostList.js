@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SinglePost from '../SinglePost/SinglePost';
+import SinglePost from '../../containers/SinglePost/SinglePost';
 import { Row, Grid, Col } from 'react-bootstrap';
-import { apiUrl } from '../config';
+import { apiUrl } from '../../config';
 import ModalWindow from '../Modal/Modal';
 import './PostList.scss';
 

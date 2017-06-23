@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-import Search from '../Search/Search';
-import PostList from '../PostList/PostList';
+import Search from '../../components/Search/Search';
+import PostList from '../../components/PostList/PostList';
 import Footer from '../Footer/Footer';
 import './Page.scss';
 

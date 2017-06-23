@@ -4,7 +4,7 @@ import {
     Route
 } from 'react-router-dom';
 import Page from '../Page/Page';
-import PostDetails from '../PostDetails/PostDetails';
+import PostDetails from '../../components/PostDetails/PostDetails';
 import './App.scss';
 
 class App extends Component {

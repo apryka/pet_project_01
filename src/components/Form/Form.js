@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Grid, Col, FormGroup, Radio, FormControl, Button, HelpBlock } from 'react-bootstrap';
-import { apiUrl } from '../config';
+import { apiUrl } from '../../config';
 import { Link } from 'react-router-dom';
 import Comments from '../Comments/Comments';
 import './Form.scss';

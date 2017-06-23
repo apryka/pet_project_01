@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../Logo/Logo';
 import PropTypes from 'prop-types';
-import { logoUrl } from '../config';
+import { logoUrl } from '../../config';
 import './Header.scss';
 
 class Header extends Component {
