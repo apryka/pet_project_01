@@ -4,6 +4,8 @@ import { Row, Grid, Col } from 'react-bootstrap';
 import { apiUrl } from '../../config';
 import ModalWindow from '../Modal/Modal';
 import './PostList.scss';
+import { fetchPosts } from '../../actions/PostList-actions';
+import { connect } from 'react-redux';
 
 
 class PostList extends Component {
@@ -19,13 +21,16 @@ class PostList extends Component {
     }
 
     __getPostsFromAPI() {
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(json => this.setState({posts: json}));
+        // fetch(apiUrl)
+        //     .then(response => response.json())
+        //     .then(json => this.setState({posts: json}));
+
+        this.props.fetchPosts();
     }
 
     __createPostsList() {
-        const postsArray = this.state.posts;
+        // const postsArray = this.state.posts;
+        const postsArray = this.props.posts;
         const filterText = this.props.filteredText;
         let finalArray = [];
 
@@ -118,4 +123,20 @@ class PostList extends Component {
     }
 }
 
-export default PostList;
+// export default PostList;
+
+
+function mapStateToProps(state) {
+    console.log(state.PostListReducer.posts);
+    return {
+        posts: state.PostListReducer.posts
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchPosts: () => dispatch(fetchPosts(dispatch)),
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostList);

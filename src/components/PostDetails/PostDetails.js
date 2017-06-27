@@ -25,20 +25,7 @@ class PostDetails extends Component {
         };
     }
 
-    getUsersData(data) {
-        console.log( {
-            type: 'GET_USERS',
-            payload: {
-                users: data
-            }
-        }
-        );
-    }
-
     __getDataFromAPI() {
-
-        fetch(apiUsers)
-            .then(response => this.getUsersData(response.json()));
 
         fetch(apiUsers)
             .then(response => response.json())

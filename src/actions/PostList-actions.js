@@ -1,14 +1,58 @@
 import * as types from './action-types';
+import { apiUrl } from '../config';
 
-export function getPostsFromAPI(url) {
+
+export function fetchPosts(dispatch) {
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(posts => dispatch(receivePosts(posts)))
+        .catch(status => dispatch(invalidatePosts(status)));
     return {
-        type: types.GET_POSTS
+        type: types.FETCH_POSTS,
+        payload: {}
+    }
+
+}
+
+export function receivePosts(posts) {
+    console.log(posts);
+    return {
+        type: types.RECEIVE_POSTS,
+        payload: {
+            posts
+        }
     }
 }
 
-export function deletePost(postId) {
+export function invalidatePosts() {
+    return {
+        type: types.INVALIDATE_POSTS,
+        payload: {}
+    }
+}
+
+export function deletePost(postId, dispatch) {
+    fetch(`${apiUrl}/${postId}`, { method: 'DELETE'})
+        .then(() => dispatch(handleDeletePost(postId)))
+        .catch(status => dispatch(invalidateDeletePost(status)));
     return {
         type: types.DELETE_POST,
-        postId
+        payload: {}
+    }
+}
+
+export function handleDeletePost(postId) {
+    return {
+        type: types.HANDLE_DELETE_POST,
+        payload: {
+            postId
+        }
+    }
+}
+
+export function invalidateDeletePost() {
+    return {
+        type: types.INVALIDATE_DELETE_POST,
+        payload: {}
     }
 }

@@ -1,4 +1,10 @@
 import { combineReducers } from 'redux';
 
 // Reducers
-i
+import PostListReducer from './PostList-reducer';
+
+
+const reducers = combineReducers({
+    PostListReducer
+});
+export default reducers;
