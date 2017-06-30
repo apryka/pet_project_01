@@ -4,6 +4,7 @@ import { apiUrl, apiUsers } from '../config';
 
 export function fetchSinglePost(postId, dispatch) {
     fetch(`${apiUrl}/${postId}`)
+        .then(response => response.json())
         .then(post => dispatch(receiveSinglePost(post)))
         .catch(status => dispatch(invalidateSinglePost(status)));
     return {
@@ -17,10 +18,12 @@ export function receiveSinglePost(post) {
     return {
         type: types.RECEIVE_SINGLE_POST,
         payload: {
-            id: post.id,
-            title: post.title,
-            body: post.body,
-            userId: post.userId
+            post: {
+                id: post.id,
+                title: post.title,
+                body: post.body,
+                userId: post.userId
+            }
         }
     }
 }
@@ -34,7 +37,8 @@ export function invalidateSinglePost() {
 
 export function fetchUsers(dispatch) {
     fetch(apiUsers)
-        .then(post => dispatch(receiveUsers()))
+        .then(response => response.json())
+        .then(users => dispatch(receiveUsers(users)))
         .catch(status => dispatch(invalidateUsers(status)));
     return {
         type: types.FETCH_USERS,
@@ -43,7 +47,7 @@ export function fetchUsers(dispatch) {
 
 }
 
-export function receiveUsers() {
+export function receiveUsers(users) {
     return {
         type: types.RECEIVE_USERS,
         payload: {
@@ -61,7 +65,8 @@ export function invalidateUsers() {
 
 export function fetchComments(postId, dispatch) {
     fetch(`${apiUrl}/${postId}/comments`)
-        .then(post => dispatch(receiveComments(post)))
+        .then(response => response.json())
+        .then(comments => dispatch(receiveComments(comments)))
         .catch(status => dispatch(invalidateComments(status)));
     return {
         type: types.FETCH_COMMENTS,
@@ -70,11 +75,11 @@ export function fetchComments(postId, dispatch) {
 
 }
 
-export function receiveComments() {
+export function receiveComments(comments) {
     return {
         type: types.RECEIVE_COMMENTS,
         payload: {
-            users
+            comments
         }
     }
 }

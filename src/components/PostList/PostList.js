@@ -4,7 +4,7 @@ import { Row, Grid, Col } from 'react-bootstrap';
 import { apiUrl } from '../../config';
 import ModalWindow from '../Modal/Modal';
 import './PostList.scss';
-import { fetchPosts } from '../../actions/PostList-actions';
+import { fetchPosts, deletePost, openModal, closeModal } from '../../actions/PostList-actions';
 import { connect } from 'react-redux';
 
 
@@ -48,35 +48,61 @@ class PostList extends Component {
         )
     }
 
-    __handleDeletePost() {
-        const postId = this.state.postId;
-        const url = `${apiUrl}/${postId}`;
-        const posts = this.state.posts.filter(post => post.id !== postId);
+    __handleDeletePost(postId) {
+        // const postId = this.state.postId;
+        // const url = `${apiUrl}/${postId}`;
+        // const posts = this.state.posts.filter(post => post.id !== postId);
+        //
+        // this.setState({
+        //     posts: posts,
+        //     isModalOpen: false
+        // });
+        //
+        // fetch(url, { method: 'DELETE' })
+        //     .then(response => response.json())
+        //     .then(json => console.log(json));
 
-        this.setState({
-            posts: posts,
-            isModalOpen: false
-        });
-
-        fetch(url, { method: 'DELETE' })
-            .then(response => response.json())
-            .then(json => console.log(json));
+        this.props.deletePost(postId);
+        this.props.closeModal();
 
     }
 
     __handleOpenModal(postId) {
 
-        this.setState({
-            isModalOpen: true,
-            postId: postId
-        });
+        // this.setState({
+        //     isModalOpen: true,
+        //     postId: postId
+        // });
+
+        const buttonsArray = [
+            {
+                id: 1,
+                label: 'Confirm from store',
+                style: 'success',
+                action: () => this.__handleDeletePost(postId)
+            },
+            {
+                id: 2,
+                label: 'Cancel from store',
+                style: 'default',
+                action: () => this.__handleCloseModal()
+            }
+        ];
+
+        this.props.openModal({
+            title: 'Delete Post from Store',
+            body: `Please confirm to delete the post with ID ${postId}`,
+            buttons: buttonsArray
+            }
+        );
 
     }
 
     __handleCloseModal() {
-        this.setState({
-            isModalOpen: false
-        })
+        // this.setState({
+        //     isModalOpen: false
+        // })
+        this.props.closeModal()
     }
 
     componentDidMount() {
@@ -111,12 +137,19 @@ class PostList extends Component {
                     </Row>
                 </Grid>
                 { this.__createPostsList() }
+                {/*<ModalWindow*/}
+                    {/*isModalOpen = {this.state.isModalOpen}*/}
+                    {/*closeFunction = { e => this.__handleCloseModal(e) }*/}
+                    {/*modalTitle = 'Delete post'*/}
+                    {/*modalBody = { `Please confirm to delete the post with ID ${this.state.postId}` }*/}
+                    {/*buttons = { buttonsArray }*/}
+                {/*/>*/}
                 <ModalWindow
-                    isModalOpen = {this.state.isModalOpen}
+                    isModalOpen = { this.props.modal.isOpen }
                     closeFunction = { e => this.__handleCloseModal(e) }
-                    modalTitle = 'Delete post'
-                    modalBody = { `Please confirm to delete the post with ID ${this.state.postId}` }
-                    buttons = { buttonsArray }
+                    modalTitle = { this.props.modal.title }
+                    modalBody = { this.props.modal.body }
+                    buttons = { this.props.modal.buttons }
                 />
             </div>
         )
@@ -127,15 +160,20 @@ class PostList extends Component {
 
 
 function mapStateToProps(state) {
-    console.log(state.PostListReducer.posts);
     return {
-        posts: state.PostListReducer.posts
+        posts: state.PostListReducer.posts,
+        modal: state.PostListReducer.modal,
+        postId: state.PostListReducer.postId
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
         fetchPosts: () => dispatch(fetchPosts(dispatch)),
+        deletePost: (postId) => dispatch(deletePost(postId, dispatch)),
+        openModal: ({title, body, buttons}) => dispatch(openModal({title, body, buttons}, dispatch)),
+        closeModal: () => dispatch(closeModal(dispatch))
+
     };
 }
 

@@ -15,7 +15,6 @@ export function fetchPosts(dispatch) {
 }
 
 export function receivePosts(posts) {
-    console.log(posts);
     return {
         type: types.RECEIVE_POSTS,
         payload: {
@@ -53,6 +52,26 @@ export function handleDeletePost(postId) {
 export function invalidateDeletePost() {
     return {
         type: types.INVALIDATE_DELETE_POST,
+        payload: {}
+    }
+}
+
+export function openModal({title, body, buttons}) {
+    return {
+        type: types.OPEN_MODAL,
+        payload: {
+            modal: {
+                title,
+                body,
+                buttons
+            }
+        }
+    }
+}
+
+export function closeModal() {
+    return {
+        type: types.CLOSE_MODAL,
         payload: {}
     }
 }

@@ -4,6 +4,8 @@ import { Row, Grid, Col, FormGroup, Radio, FormControl, Button, HelpBlock } from
 import { apiUrl } from '../../config';
 import { Link } from 'react-router-dom';
 import Comments from '../Comments/Comments';
+import { updatePost } from '../../actions/Form-actions';
+import { connect } from 'react-redux';
 import './Form.scss';
 
 class Form extends Component {
@@ -33,6 +35,7 @@ class Form extends Component {
                 validationState: null
             }
         };
+
     }
 
     __isFormValid() {
@@ -42,7 +45,7 @@ class Form extends Component {
             this.state.postBody,
             this.state.postUsers
         ];
-
+        console.log(formFieldsState);
         for (let field of formFieldsState) {
             if (field.validationState !== 'success') return false;
         }
@@ -93,6 +96,22 @@ class Form extends Component {
     }
 
     __setPostValue(event) {
+
+        //console.log(event.target);
+
+        // const form = {
+        //     [event.target.id] : {
+        //         value: event.target.value
+        //     }
+        // };
+
+        //console.log(form);
+
+        //this.props.updateForm(form);
+        // console.log(this.props);
+        //event.target.value=this.props.postTitle.value;
+
+        //console.log(this.props.post.title);
 
         if (!!event.target.value) {
 
@@ -157,7 +176,7 @@ class Form extends Component {
         });
     }
 
-    __handleSubmit(event) {
+    __handleSubmit(event) { console.log('submit');
         event.preventDefault();
 
         let method;
@@ -207,9 +226,11 @@ class Form extends Component {
 
         if (this.__isFormValid()) {
 
-            fetch(url, { method: method, data: postData})
-                .then(response => response.json())
-                .then(json => console.log(postData, json));
+            // fetch(url, { method: method, data: postData})
+            //     .then(response => response.json())
+            //     .then(json => console.log(postData, json));
+
+            this.props.updatePost(url, { method: method, data: postData})
         }
 
     }
@@ -237,7 +258,7 @@ class Form extends Component {
         }
     }
 
-    render() {
+    render() { console.log(this.state);
         return (
             <Grid>
                 <Row>
@@ -246,7 +267,8 @@ class Form extends Component {
                         <form onSubmit={ e => this.__handleSubmit(e) }>
                             {this.__generateFieldGroup({
                                 id:'postTitle',
-                                value:this.state.postTitle.value,
+                                // value:this.props.post.title,
+                                value: this.state.postTitle.value,
                                 onInput: (e => this.__setPostValue(e)),
                                 validationState:this.state.postTitle.validationState,
                                 validationMessage:this.state.postTitle.validationMessage
@@ -254,7 +276,7 @@ class Form extends Component {
                             {this.__generateFieldGroup({
                                 id:'postBody',
                                 className: 'post__body',
-                                value:this.state.postBody.value,
+                                value: this.state.postBody.value,
                                 componentClass:'textarea',
                                 onInput: (e => this.__setPostValue(e)),
                                 validationState:this.state.postBody.validationState,
@@ -274,4 +296,31 @@ class Form extends Component {
     }
 }
 
-export default Form;
+// export default Form;
+
+
+function mapStateToProps(state) { console.log('STATE', state.PostDetailsReducer.post.title, state.FormReducer.postTitle.value);
+    return {
+        users: state.PostDetailsReducer.users,
+        comments: state.PostDetailsReducer.comments,
+        post: state.PostDetailsReducer.post,
+
+        // userId: state.FormReducer.userId,
+        // isButtonDisabled: state.FormReducer.isButtonDisabled,
+        // postTitle: {
+        //     value: state.FormReducer.postTitle.value
+        // },
+        // postBody: {
+        //     value: state.FormReducer.postBody.value
+        // }
+
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        updatePost: (url, { method, postData}) => dispatch(updatePost(url, { method, postData}, dispatch))
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
