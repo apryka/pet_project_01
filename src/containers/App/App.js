@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import Page from '../Page/Page';
 import PostDetails from '../../components/PostDetails/PostDetails';
+import Login from '../../components/Login/Login';
 import './App.scss';
 import store from '../../store';
 import { Provider } from 'react-redux';
@@ -31,6 +32,7 @@ class App extends Component {
                         <Route exact path="/" component={Page} />
                         <Route exact path="/post/:id" component={PostDetails} />
                         <Route exact path="/new-post" component={PostDetails} />
+                        <Route exact path="/Login" component={Login} />
                     </div>
                 </Router>
             </Provider>

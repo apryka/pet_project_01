@@ -78,7 +78,7 @@ class Form extends Component {
         )
     }
 
-    __generateUsers(userArray) {
+    __generateUsers(userArray) { console.log('user', userArray);
 
         return (
             userArray.map(user => (
@@ -89,7 +89,7 @@ class Form extends Component {
                     validationState = { this.state.postUsers.validationState }
                     onClick={ e => this.__handleUserSelect(e)}
                 >
-                    {user.name}
+                    {user.firstName} {user.lastName}
                 </Radio>
             ))
         )
